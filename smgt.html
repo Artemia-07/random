@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Good Luck!</title>
+
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: purple;
+            font-family: 'Poppins', sans-serif;
+            overflow: hidden;
+        }
+
+        .message {
+            text-align: center;
+            color: white;
+            font-size: 3rem;
+            font-weight: bold;
+            animation: pop 1s ease forwards;
+        }
+
+        @keyframes pop {
+            0% { transform: scale(0); opacity: 0; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
+        .confetti {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background: white;
+            opacity: 0.7;
+            animation: fall 3s linear infinite;
+        }
+
+        @keyframes fall {
+            to {
+                transform: translateY(110vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        #button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background: white;
+            color: #940e7b;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        #button:hover {
+            transform: scale(1.1);
+            background: #ffe6ee;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="message">
+        Semangat Ujiannya :)
+        <br>
+        <button id="button">Click for a Surprise</button>
+    </div>
+
+    <script>
+        // Surprise pop-up message
+        document.getElementById("button").onclick = function () {
+            alert("Realistically 100! 💪");
+        };
+
+        // Confetti effect
+        function createConfetti() {
+            const confetti = document.createElement("div");
+            confetti.classList.add("confetti");
+
+            confetti.style.left = Math.random() * 100 + "vw";
+            confetti.style.background = `hsl(${Math.random() * 360}, 100%, 75%)`;
+            confetti.style.animationDuration = (Math.random() * 2 + 2) + "s";
+
+            document.body.appendChild(confetti);
+
+            setTimeout(() => confetti.remove(), 4000);
+        }
+
+        setInterval(createConfetti, 150);
+    </script>
+
+</body>
+</html>
